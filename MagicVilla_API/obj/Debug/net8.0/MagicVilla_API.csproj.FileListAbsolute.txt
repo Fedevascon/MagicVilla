@@ -31,3 +31,7 @@ C:\Users\annva\OneDrive\Escritorio\magic_villa\MagicVilla\MagicVilla_API\obj\Deb
 C:\Users\annva\OneDrive\Escritorio\magic_villa\MagicVilla\MagicVilla_API\obj\Debug\net8.0\MagicVilla_API.pdb
 C:\Users\annva\OneDrive\Escritorio\magic_villa\MagicVilla\MagicVilla_API\obj\Debug\net8.0\MagicVilla_API.genruntimeconfig.cache
 C:\Users\annva\OneDrive\Escritorio\magic_villa\MagicVilla\MagicVilla_API\obj\Debug\net8.0\ref\MagicVilla_API.dll
+C:\Users\annva\OneDrive\Escritorio\magic_villa\MagicVilla\MagicVilla_API\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\annva\OneDrive\Escritorio\magic_villa\MagicVilla\MagicVilla_API\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\annva\OneDrive\Escritorio\magic_villa\MagicVilla\MagicVilla_API\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\annva\OneDrive\Escritorio\magic_villa\MagicVilla\MagicVilla_API\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
