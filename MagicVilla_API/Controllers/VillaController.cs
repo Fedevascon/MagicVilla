@@ -16,22 +16,22 @@ namespace MagicVilla_API.Controllers
         public ActionResult<IEnumerable<VillaDto>> GetVillas()
         {
             return Ok(VillaStore.villaList);
-            
+
         }
 
-        [HttpGet("id:int", Name="GetVilla")]
+        [HttpGet("id:int", Name = "GetVilla")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult <VillaDto> GetVilla(int id)
+        public ActionResult<VillaDto> GetVilla(int id)
         {
-            if(id==0)
+            if (id == 0)
             {
                 return BadRequest();
             }
             var villa = VillaStore.villaList.FirstOrDefault(v => v.Id == id);
 
-            if(villa == null)
+            if (villa == null)
             {
                 return NotFound();
             }
@@ -50,7 +50,7 @@ namespace MagicVilla_API.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (VillaStore.villaList.FirstOrDefault(v=>v.Nombre.ToLower() == villaDto.Nombre.ToLower()) !=null)
+            if (VillaStore.villaList.FirstOrDefault(v => v.Nombre.ToLower() == villaDto.Nombre.ToLower()) != null)
             {
                 ModelState.AddModelError("NombreExiste", "La villa con ese nombre ya existe!");
                 return BadRequest(ModelState);
@@ -58,20 +58,55 @@ namespace MagicVilla_API.Controllers
             }
 
 
-            if(villaDto == null)
+            if (villaDto == null)
             {
                 return BadRequest(villaDto);
             }
-            if(villaDto.Id>0)
+            if (villaDto.Id > 0)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
             villaDto.Id = VillaStore.villaList.OrderByDescending(v => v.Id).FirstOrDefault().Id + 1;
             VillaStore.villaList.Add(villaDto);
 
-            return CreatedAtRoute("GetVilla", new {id= villaDto.Id}, villaDto);
+            return CreatedAtRoute("GetVilla", new { id = villaDto.Id }, villaDto);
         }
+        [HttpDelete("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
 
+        public IActionResult DeleteVilla(int id)
+        {
+            if (id == 0)
+            {
+                return BadRequest();
+            }
+            var villa = VillaStore.villaList.FirstOrDefault(v => v.Id == id);
+            if (villa == null)
+            {
+                return NotFound();
+            }
+            VillaStore.villaList.Remove(villa);
 
+            return NoContent();
+        }
+        [HttpPut("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+
+        public IActionResult UpdateVilla(int id, [FromBody] VillaDto villaDto)
+        {
+            if(villaDto==null || id!= villaDto.Id)
+            {
+                return BadRequest();
+            }
+            var villa = VillaStore.villaList.FirstOrDefault(v => v.Id == id);
+            villa.Nombre = villaDto.Nombre;
+            villa.Ocupantes = villaDto.Ocupantes;
+            villa.MetrosCuadrados = villaDto.MetrosCuadrados;
+
+            return NoContent();
+        }
     }
 }
