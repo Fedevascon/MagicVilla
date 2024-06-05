@@ -1,10 +1,25 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Modelos\NewFolder1\**" />
+    <Compile Remove="Modelos\NewFolder2\**" />
+    <Compile Remove="Modelos\NewFolder\**" />
+    <Content Remove="Modelos\NewFolder1\**" />
+    <Content Remove="Modelos\NewFolder2\**" />
+    <Content Remove="Modelos\NewFolder\**" />
+    <EmbeddedResource Remove="Modelos\NewFolder1\**" />
+    <EmbeddedResource Remove="Modelos\NewFolder2\**" />
+    <EmbeddedResource Remove="Modelos\NewFolder\**" />
+    <None Remove="Modelos\NewFolder1\**" />
+    <None Remove="Modelos\NewFolder2\**" />
+    <None Remove="Modelos\NewFolder\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
